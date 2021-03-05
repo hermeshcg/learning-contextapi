@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import Movie from './Movie';
+import { useState, createContext } from 'react';
 
-function MovieList() {
+export const MovieContext = createContext();
+
+export const MovieProvider = (props) => {
   const [movies, setMovies] = useState([
     {
       name: 'Harry Potter',
@@ -21,12 +22,8 @@ function MovieList() {
   ]);
 
   return (
-    <ul>
-      {movies.map((movie) => (
-        <Movie name={movie.name} price={movie.price} />
-      ))}
-    </ul>
+    <MovieContext.Provider value={[movies, setMovies]}>
+      {props.children}
+    </MovieContext.Provider>
   );
-}
-
-export default MovieList;
+};

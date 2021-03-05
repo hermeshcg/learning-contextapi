@@ -1,11 +1,17 @@
-import MovieList from './MovieList';
+import AddMovie from './Components/AddMovie';
+import MovieList from './Components/MovieList';
+import Nav from './Components/Nav';
+import { MovieProvider } from './MovieContext';
 
 function App() {
   return (
-    <div className="App">
-      <h1>hello</h1>
-      <MovieList />
-    </div>
+    <MovieProvider>
+      <div className="App">
+        <Nav />
+        <AddMovie />
+        <MovieList />
+      </div>
+    </MovieProvider>
   );
 }
 
